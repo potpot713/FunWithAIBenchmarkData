@@ -6,14 +6,16 @@ from readingLevelPackage.readingLevel import Reading_Level
 from utilitiesPackage.utilities import *
 from utilitiesPackage.CSV_Utilities import *
 from PDFPackage.PDFUtilities import *
+from visualizationPackage.visualization import* 
 
 if __name__ == "__main__":
 
     CSV_Processor = MMLU_CSV_Processor("dataPackage/MMLU/data/", ["management_test.csv"])
     questions = CSV_Processor.read_data()
     print(len(questions), "questions read")
-
- 
+    
+    visualize_question_correct_answers(questions)
+    
     myPDF = PDFUtilities()
     myPDF.create_question_PDF("Management Test", "MMLU", questions)
    
